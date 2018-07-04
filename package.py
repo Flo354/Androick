@@ -278,9 +278,9 @@ class Package():
 	
 	def getPermissions(self):
 		print "Getting files permissions..."
-		cmd = "adb " + self.device + " shell su -c ls -aRl /data/data/" + self.package + " /sdcard/Android/data/" + self.package
+		cmd = "adb " + self.device + " shell su -c 'ls -aRl /data/data/" + self.package + " /sdcard/Android/data/" + self.package + "'"
 		if self.externalStorage:
-			cmd += " " + self.externalStorage + "/Android/data/"+ self.package
+			cmd = cmd[:-1] + " " + self.externalStorage + "/Android/data/"+ self.package + "'"
 		writeResultToFile(cmd, self.path + "/permissions", self.verbose)
 		print ""
 	
